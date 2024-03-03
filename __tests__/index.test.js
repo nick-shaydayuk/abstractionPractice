@@ -3,126 +3,87 @@ import * as funcs from '../index.js';
 
 describe('task1', () => {
   it('should return undefined', () => {
-    expect(funcs.convertToLowerOrUpperCase()).toBeUndefined();
+    expect(funcs.convertToClock()).toBeUndefined();
   });
   it('should work', () => {
     expect(
-      funcs.convertToLowerOrUpperCase(['lower', 'upper'], 'upper'),
-    ).toEqual(['LOWER', 'UPPER']);
+      funcs.convertToClock(5, 4, 2, 3),
+    ).toEqual('23:54');
   });
   it('should work', () => {
     expect(
-      funcs.convertToLowerOrUpperCase(['LOWER', 'UPPER'], 'lower'),
-    ).toEqual(['lower', 'upper']);
+      funcs.convertToClock(6, 7, 4, 1),
+    ).toEqual('17:46');
   });
 });
 
 describe('task2', () => {
   it('should return undefined', () => {
-    expect(funcs.convertToFilteredLowerOrUpperCase()).toBeUndefined();
+    expect(funcs.singSong()).toBeUndefined();
   });
   it('should work', () => {
     expect(
-      funcs.convertToFilteredLowerOrUpperCase(['lower', 'upper'], 'upper'),
-    ).toEqual(['LOWER', 'UPPER']);
+      funcs.singSong('pen'),
+    ).toEqual('I have a pen.');
   });
   it('should work', () => {
     expect(
-      funcs.convertToFilteredLowerOrUpperCase(['LOWER', 'UPPER'], 'lower'),
-    ).toEqual(['lower', 'upper']);
+      funcs.singSong('apple'),
+    ).toEqual('I have an apple.');
   });
   it('should work', () => {
     expect(
-      funcs.convertToFilteredLowerOrUpperCase(
-        ['LOWER', { a: 123 }, 'UPPER'],
-        'lower',
-      ),
-    ).toEqual(['lower', 'upper']);
-  });
-  it('should work', () => {
-    expect(
-      funcs.convertToFilteredLowerOrUpperCase(
-        ['yankee', { a: 123 }, 'go', { b: 456 }, 'home'],
-        'UPPER',
-      ),
-    ).toEqual(['YANKEE', 'GO', 'HOME']);
+      funcs.singSong('apple', 'pen')
+    ).toEqual('Uhh! Apple-pen!');
   });
 });
 
 describe('task3', () => {
-  const users = [
-    { name: 'Alice', age: 25 },
-    { name: 'Bob', age: 17 },
-    { name: 'Charlie', age: 30 },
-    { name: 'David', age: 16 },
-  ];
-  const result = [
-    { name: 'Alice', age: 25 },
-    { name: 'Charlie', age: 30 },
-  ];
-  const users2 = [
-    { name: 'Victor', age: 15 },
-    { name: 'Gus', age: 17 },
-    { name: 'Lalo', age: 30 },
-    { name: 'Walter', age: 52 },
-  ];
-  const result2 = [
-    { name: 'Lalo', age: 30 },
-    { name: 'Walter', age: 52 },
-  ];
   it('should return undefined', () => {
-    expect(funcs.filterUsersByAge()).toBeUndefined();
+    expect(funcs.countRocks()).toBeUndefined();
   });
   it('should work', () => {
-    expect(funcs.filterUsersByAge(users)).toEqual(result);
+    expect(funcs.countRocks(2)).toEqual(100);
   });
   it('should work', () => {
-    expect(funcs.filterUsersByAge(users2)).toEqual(result2);
+    expect(funcs.countRocks(13)).toEqual(850);
   });
 });
 
 describe('task4', () => {
-  const users = [
-    { name: 'Alice', age: 25, capableOfMarathon: true },
-    { name: 'Bob', age: 17, capableOfMarathon: false },
-    { name: 'Charlie', age: 30, capableOfMarathon: false },
-    { name: 'David', age: 16, capableOfMarathon: true },
-  ];
-  const result = [
-    { name: 'Alice', age: 25, capableOfMarathon: true },
-    { name: 'Charlie', age: 30, capableOfMarathon: false },
-  ];
-  const result2 = [
-    { name: 'Alice', age: 25, capableOfMarathon: true },
-    { name: 'David', age: 16, capableOfMarathon: true },
-  ];
+  const users1 = [];
+  const users2 = ['Peter'];
+  const users3 = ['Jacob', 'Alex']
+  const users4 = ['Max', 'John', 'Mark'];
+  const users5 = ['Alex', 'Jacob', 'Mark', 'Max'];
   it('should return undefined', () => {
-    expect(funcs.filterUsersByParam()).toBeUndefined();
+    expect(funcs.getLikers()).toBeUndefined();
   });
   it('should work', () => {
-    expect(funcs.filterUsersByParam(users, 'age', 18, '>')).toEqual(result);
+    expect(funcs.getLikers(users1)).toEqual('no one likes this');
   });
   it('should work', () => {
-    expect(funcs.filterUsersByParam(users, 'capableOfMarathon', true)).toEqual(result2);
+    expect(funcs.getLikers(users2)).toEqual('Peter likes this');
+  });
+  it('should work', () => {
+    expect(funcs.getLikers(users3)).toEqual('Jacob and Alex like this');
+  });
+  it('should work', () => {
+    expect(funcs.getLikers(users4)).toEqual('Max, John and Mark like this');
+  });
+  it('should work', () => {
+    expect(funcs.getLikers(users5)).toEqual('Alex, Jacob and 2 others like this');
   });
 });
 
 describe('task5', () => {
-  it('should count', () => {
-    expect(funcs.divisibleAverage([0, -1, 10, 20, 30, 40, 50], 3)).toEqual(15);
-  });
-  it('should count', () => {
-    expect(funcs.divisibleAverage([0, -1, 10, 20, 30, 40, 50], 2)).toEqual(25);
-  });
-  it('should count', () => {
-    expect(
-      funcs.divisibleAverage([0, -1, 10, 20, 30, 40, 52, 104, 416], 26),
-    ).toEqual(143);
-  });
-  it('should count', () => {
-    expect(funcs.divisibleAverage([3, 6, 9, 12, 15], 3)).toEqual(9);
-  });
   it('should not count', () => {
-    expect(funcs.divisibleAverage()).toBeUndefined();
+    expect(funcs.sortString()).toBeUndefined();
+  });
+  it('should count', () => {
+    expect(funcs.sortString('is2 Thi1s T4est 3a')).toEqual('Thi1s is2 3a T4est');
+  });
+  it('should count', () => {
+    expect(funcs.sortString('4of Fo1r pe6ople g3ood th5e the2')).toEqual('Fo1r the2 g3ood 4of th5e pe6ople');
   });
 });
